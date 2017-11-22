@@ -6,7 +6,9 @@ import { KundennummerService } from './../../services/kundennummerService';
 import { Component, OnInit } from '@angular/core';
 import { ReplaySubject } from 'rxjs/ReplaySubject';
 import 'rxjs/add/operator/delay';
+import 'rxjs/add/operator/do';
 import 'rxjs/add/observable/zip';
+import { ChatService } from '../../services/chatService';
 
 @Component({
     selector: 'lv-chat',
@@ -22,9 +24,14 @@ export class ChatComponent implements OnInit {
     private _indicatorMessage = new ChatMessage('...', MessageType.INDICATOR);
 
     public constructor(private _kundennummerService: KundennummerService,
+        private _chatService: ChatService,
         private _dataService: DataService) { }
 
     ngOnInit(): void {
+        this._chatService
+            .answerStream
+            .subscribe(answer => this.messageStream.next(answer));
+
         this.messageStream
             .delay(2000)
             .subscribe(message => this.messages.push(message));
@@ -52,8 +59,15 @@ export class ChatComponent implements OnInit {
         }
 
         this.messages = this.messages.filter(message => message.type !== MessageType.INDICATOR);
-        this.messages.push(new ChatMessage(this.newMessage, MessageType.USER));
-        this.newMessage = null;
-        this.messageStream.next(this._indicatorMessage);
+
+        Observable.of(this.newMessage)
+            .do(message => this.messages.push(new ChatMessage(message, MessageType.USER)))
+            .do(message => this.newMessage = null)
+            .do(message => this.messageStream.next(this._indicatorMessage))
+            .delay(3000)
+            .switchMap(message => this._chatService.answer(message))
+            .do(newRemoteMessage => this.messageStream.next(newRemoteMessage))
+            .delay(1500)
+            .subscribe(newRemoteMessage => this.messages = this.messages.filter(msg => msg.type !== MessageType.INDICATOR));
     }
 }
