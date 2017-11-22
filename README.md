@@ -32,3 +32,6 @@ Diese Nachricht soll folgendes Anzeigen:
 
 Diese Nachricht soll nachdem die Chatseite betreten wurde, mit einer Sekunde Verzögerung erscheinen! Dies soll
 das Gefühl einer Konversation verstärken.
+
+Es existiert schon eine Chat Komponente in die auch alle benötigten Services injeziert werden.
+Viel Erfolg.
