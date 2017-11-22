@@ -61,9 +61,9 @@ Zudem ist es Anforderung dass Nachrichten des Nutzers in schwarz auf hellgrau da
 
 In diesem Schritt binden wir nun den Chatservice an.
 Um diesen zunächst zu simulieren implementieren wir in dem Service ChatService eine Methode
-answer(kundennummer: number, message: string): Observable<ChatMessage>
+answer(message: string): Observable<ChatMessage>
 
-Diese Methode nimmt die Kundennummer und die Nachricht des Benutzers entgegen.
+Diese Methode nimmt die Nachricht des Benutzers entgegen. Die Signatur soll genau so sein!
 Der Service soll ein Array mit 3 beliebigen Antworten enthalten von denen immer eine als Antwort zurückgegeben wird.
 Die Antwort soll hierbei zufällig ausgewählt werden.
 
