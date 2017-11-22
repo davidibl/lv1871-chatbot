@@ -35,3 +35,14 @@ das Gefühl einer Konversation verstärken.
 
 Es existiert schon eine Chat Komponente in die auch alle benötigten Services injeziert werden.
 Viel Erfolg.
+
+
+# Schritt 4 - Ein Userinput hinzufügen
+
+Als nächstes benötigen wir eine Eingabemöglichkeit damit der User einen neuen Text eingeben kann.
+Hierzu soll am ganz unteren Rand des Bildschirms ein 2-zeiliges Textfeld dargestellt werden.
+Neben dem Textfeld soll sich ein Button befinden über den die Nachricht gesendet wird.
+
+Wenn eine Nachricht gesendet wurde, soll die Nachricht unmittelbar im Nachrichtenstream erscheinen.
+Und direkt eine Nachricht mit drei Punkten, die suggeriert dass der virtuelle Gesprächspartner
+gerade eine Antwort schreibt.
