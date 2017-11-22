@@ -10,7 +10,7 @@
   },
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --prod --aot=true",
+    "start": "ng serve --aot=true",
     "start-prod": "ng serve --prod",
     "build": "ng build",
     "build-prod": "ng build --prod",
