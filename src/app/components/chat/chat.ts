@@ -15,13 +15,14 @@ export class ChatComponent implements OnInit {
 
     public messageStream = new ReplaySubject<string>();
     public messages = new Array<string>();
+    public newMessage: string;
 
     public constructor(private _kundennummerService: KundennummerService,
                        private _dataService: DataService) {}
 
     ngOnInit(): void {
         this.messageStream
-            .delay(1000)
+            .delay(2000)
             .subscribe(message => this.messages.push(message));
 
         Observable
@@ -35,5 +36,15 @@ export class ChatComponent implements OnInit {
                 this.messageStream.next(`Hallo Herr ${auskunft.kunde.name},` +
                     `wie geht es Ihnen? Übrigens, Ihre Kundennummer ist ${kundennummer}`);
             });
+    }
+
+    public sendMessage() {
+        if (!this.newMessage) {
+            return;
+        }
+
+        this.messages.push(this.newMessage);
+        this.newMessage = null;
+        this.messageStream.next('...');
     }
 }

@@ -44,5 +44,14 @@ Hierzu soll am ganz unteren Rand des Bildschirms ein 2-zeiliges Textfeld dargest
 Neben dem Textfeld soll sich ein Button befinden über den die Nachricht gesendet wird.
 
 Wenn eine Nachricht gesendet wurde, soll die Nachricht unmittelbar im Nachrichtenstream erscheinen.
-Und direkt eine Nachricht mit drei Punkten, die suggeriert dass der virtuelle Gesprächspartner
+Und direkt eine Nachricht mit drei Punkten, die suggerieren dass der virtuelle Gesprächspartner
 gerade eine Antwort schreibt.
+
+
+# Schritt 5 - Ein bisschen abrunden
+
+Irgendwie passts jetzt noch nicht so recht, wenn der Nutzer eine zweite Nachricht direkt danach eingibt.
+Unsere drei Indikatorpunkte bleiben leider immer stehen.
+Das sollten wir verbessern indem die drei Punkte wenn sie denn erschienen sind immer die unterste Nachricht darstellen.
+
+Zudem ist es Anforderung dass Nachrichten des Nutzers in schwarz auf hellgrau dargestellt werden.

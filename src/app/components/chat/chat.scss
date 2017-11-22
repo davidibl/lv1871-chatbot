@@ -4,3 +4,11 @@
     background-color: #007553;
     color: white;
 }
+
+.message-wrapper {
+    height: calc(100vh - 150px);
+}
+
+.messagebox {
+    flex-grow: 1;
+}
