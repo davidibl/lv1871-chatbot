@@ -1,0 +1,106 @@
+$fa-font-path: '../../node_modules/font-awesome/fonts';
+@import "../../node_modules/font-awesome/scss/font-awesome.scss";
+@import "../../node_modules/breakpoint-sass/stylesheets/_breakpoint.scss";
+@import "../../node_modules/getbase/scss/base/_variables.scss";
+
+@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700');
+@import url('https://fonts.googleapis.com/css?family=Roboto:900');
+@import url('https://fonts.googleapis.com/css?family=Roboto+Slab');
+
+@import "./_helpersSpacing";
+
+// Brand
+
+$brand-primary:                                 #007553;
+$brand-secondary:                               #78909C;
+$brand-teritiary:                               #1E88E5;
+
+// Colors
+
+$brand-white:                                   #fffff0;
+$dark-gray:                                     #333;
+$light-gray:                                    lighten($dark-gray, 20);
+$very-light-gray:                               #E3E5E6;
+$danger:                                        #d44950;
+$default-icon-color:                            $brand-primary;
+
+// Font
+
+$primary-font:                                  'Roboto Condensed', sans-serif;
+$secondary-font:                                'Roboto', sans-serif;
+$tertiary-font:                                 'Roboto Slab', serif;
+
+$base-font-family:                              $primary-font;
+$base-heading-font-family:                      $primary-font;
+$base-blockquote-font-family:                   $primary-font;
+
+$base-heading-font-family-alternate:            $secondary-font;
+
+$base-font-color:                               #444 !default;
+
+$base-h1-color: $brand-primary;
+
+$button-color:                                  $brand-teritiary;
+$button-border:                                 1px solid transparent;
+$button-background-color:                       #fff;
+
+$button-hover-shadow:                           0px 1px 5px 1px rgba(68, 68, 68, 0.45);
+$button-hover-color:                            $brand-primary;
+$button-hover-background-color:                 #f9f9f9;
+$button-hover-border:                           1px solid transparent;
+
+$button-default-color:                          $button-color;
+$button-default-border:                         1px solid $button-color;
+
+@mixin shadow($shadow) {
+    -webkit-box-shadow:                     $shadow;
+    -moz-box-shadow:                        $shadow;
+    box-shadow:                             $shadow;
+}
+
+@mixin no-shadow() {
+    -webkit-box-shadow:                     none;
+    -moz-box-shadow:                        none;
+    box-shadow:                             none;
+}
+
+lv-header {
+    width: 100%;
+}
+
+.main-content {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.button {
+    color:                                      $button-color;
+    border:                                     $button-border;
+    background-color:                           $button-background-color;
+
+    i {
+        color:                                  $button-color;
+    }
+}
+
+.button.default {
+    color:                                      $button-default-color;
+    border:                                     $button-default-border;
+}
+
+.button:hover {
+    @include shadow($button-hover-shadow);
+
+    color:                                      $button-hover-color;
+    border:                                     $button-hover-border;
+    background-color:                           $button-hover-background-color;
+
+    i {
+                                                color: $button-hover-color;
+    }
+}
+
+
+
+@import "../../node_modules/getbase/scss/base.scss";
+@import "../../node_modules/getbase/scss/base/_helpers.scss";

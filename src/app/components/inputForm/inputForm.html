@@ -1,0 +1,40 @@
+<div *ngIf="showLabel" class="input-group">
+    <div class="input-icon-space" [class.none]="_iconClass == 'none'"></div>
+    <small class="input-label animated slideInUp slideOutDown" [class.hidden]="!isModelSet()">{{(label) ? label : placeholder}}</small>
+</div>
+
+<div class="input-group input-box">
+    <i class="input-icon fa" (click)="onIconClick()" [ngClass]="_iconClass" aria-hidden="true"></i>
+
+    <input *ngIf="!multiline" [placeholder]="placeholder"
+           [(ngModel)]="model"
+           (focus)="onFocus()"
+           (blur)="onBlur()"
+           [class.required]="required"
+           [autofocus]="autofocus"
+           [name]="name"
+           #input
+           ngModel />
+
+    <textarea *ngIf="multiline" [rows]="rows" [placeholder]="placeholder"
+           [(ngModel)]="model"
+           (focus)="onFocus()"
+           (blur)="onBlur()"
+           [class.required]="required"
+           [name]="name"
+           #input
+           ngModel></textarea>
+
+    <i (mouseover)="onOpenTooltip()"
+       (click)="onOpenTooltip()"
+       class="input-icon info fa fa-info-circle"
+       *ngIf="hint != null"
+       aria-hidden="true"></i>
+</div>
+
+<div *ngIf="validatable" class="input-group error-labels" [class.hidden]="!hasError()">
+    <div class="input-icon-space" [class.none]="_iconClass == 'none'"></div>
+    <div class="error-labels-content">
+        <ng-content></ng-content>
+    </div>
+</div>
