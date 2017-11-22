@@ -2,6 +2,9 @@ import { KundennummerService } from './kundennummerService';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/elementAt';
+import 'rxjs/add/operator/switchMap';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/observable/from';
 
 @Injectable()
 export class ChatService {
@@ -14,13 +17,16 @@ export class ChatService {
 
     public constructor(private _kundennummerservice: KundennummerService) {}
 
-    public answer(kundennummer: number, message: string) {
-
+    public answer(message: string) {
+        return this._kundennummerservice
+            .getKundennummer()
+            .switchMap(knr => this.getRandomMessage(knr));
     }
 
-    private getRandomMessage() {
+    private getRandomMessage(kundennummer: number) {
         return Observable
-            .of(this._answers)
-            .elementAt(Math.floor((Math.random() * 3)));
+            .from(this._answers)
+            .elementAt(Math.floor((Math.random() * 3)))
+            .map(message => `Hallo Kunde ${kundennummer} ` + message);
     }
 }
