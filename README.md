@@ -1,5 +1,5 @@
 # lv1871-pwa
-Ein Progressive Web App Dojo
+Eine App mit Frontend für einen Chatbot.
 
 
 # Schritt 1 - Entwicklungsumgebung
@@ -7,9 +7,9 @@ Ein Progressive Web App Dojo
 Sucht euch einen Ordner in dem alles stattfinden soll, öffnet eine Git Bash (rechtsklick -> Git Bash here)
 
 Dann folgendes Repository klonen:
-**https://github.com/davidibl/lv1871-pwa.git**
+**https://github.com/davidibl/lv1871-chatbot**
 
-*git clone https://github.com/davidibl/lv1871-pwa.git*
+*git clone https://github.com/davidibl/lv1871-chatbot*
 
 In diesem Repository findet ihr auch dieses Readme.
 
@@ -17,13 +17,18 @@ In diesem Repository findet ihr auch dieses Readme.
 
 - CLI installieren: *npm install -g @angular/cli*
 - In der Umgebungsvariablen Path eures Kontos folgenden Eintrag hinzufügen: 'C:\Users\%USERNAME%\AppDate\Roaming\npm'
-- In den Ordner des Projektes wechseln (lv1871-pwa)
+- In den Ordner des Projektes wechseln (lv1871-chatbot)
 - Nun kann die Web App gestartet werden *ng serve --port xxxx* (Port mit Glück einen freien wählen)
 - Und zuletzt könnt ihr die Web App betrachten: *localhost:port*
 
 -> Schritt 2 geschafft
 
-# Schritt 3 - Eine PWA erzeugen
+# Schritt 3 - Einen Chat bauen :-)
 
-Der erste Schritt zur Erzeugung einer PWA ist es ein manifest.json hinzuzufügen.
-Sucht im Internet ein Beispiel und sorgt dafür dass Chrome in den Dev-Tools unter *Appplication -> Manifest* unsere Webapp als PWA registriert.
+Der erste Schritt auf unserem Weg zu einem Chat Frontend soll es sein dem Benutzer eine Sprechblase mit einer Begrüßung
+darzustellen.
+Diese Nachricht soll folgendes Anzeigen:
+"Hallo Herr Ibl, wie geht es Ihnen? Übrigens, Ihre Kundennummer ist 123"
+
+Diese Nachricht soll nachdem die Chatseite betreten wurde, mit einer Sekunde Verzögerung erscheinen! Dies soll
+das Gefühl einer Konversation verstärken.
