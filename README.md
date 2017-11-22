@@ -67,7 +67,8 @@ Diese Methode nimmt die Kundennummer und die Nachricht des Benutzers entgegen.
 Der Service soll ein Array mit 3 beliebigen Antworten enthalten von denen immer eine als Antwort zurückgegeben wird.
 Die Antwort soll hierbei zufällig ausgewählt werden.
 
-Jede Antwort soll in der UI leicht eitverzögert erscheinen. Analog der initialen Nachricht.
+Jede Antwort soll in der UI leicht zeitverzögert erscheinen. Analog der initialen Nachricht.
+Ausserdem soll jede Nachricht mit 'Hallo Kunde *kundennummer* beginnen!
 Indem unsere Methode ein Observable zurück liefert, sind alle Vorbereitungen getroffen um einen Remoteservice
 zum Antworten anzubinden.
 
