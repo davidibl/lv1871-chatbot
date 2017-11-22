@@ -1,3 +1,5 @@
+import { MessageType } from './../../model/chatMessageType';
+import { ChatMessage } from './../../model/chatMessage';
 import { Observable } from 'rxjs/Observable';
 import { DataService } from './../../services/dataService';
 import { KundennummerService } from './../../services/kundennummerService';
@@ -13,12 +15,14 @@ import 'rxjs/add/observable/zip';
 })
 export class ChatComponent implements OnInit {
 
-    public messageStream = new ReplaySubject<string>();
-    public messages = new Array<string>();
+    public messageStream = new ReplaySubject<ChatMessage>();
+    public messages = new Array<ChatMessage>();
     public newMessage: string;
 
+    private _indicatorMessage = new ChatMessage('...', MessageType.INDICATOR);
+
     public constructor(private _kundennummerService: KundennummerService,
-                       private _dataService: DataService) {}
+        private _dataService: DataService) { }
 
     ngOnInit(): void {
         this.messageStream
@@ -33,8 +37,12 @@ export class ChatComponent implements OnInit {
             .subscribe(args => {
                 const auskunft = args[1];
                 const kundennummer = args[0];
-                this.messageStream.next(`Hallo Herr ${auskunft.kunde.name},` +
-                    `wie geht es Ihnen? Übrigens, Ihre Kundennummer ist ${kundennummer}`);
+                this.messageStream.next(
+                    new ChatMessage(
+                        `Hallo Herr ${auskunft.kunde.name},` +
+                        `wie geht es Ihnen? Übrigens, Ihre Kundennummer ist ${kundennummer}`,
+                        MessageType.REMOTE)
+                );
             });
     }
 
@@ -43,8 +51,9 @@ export class ChatComponent implements OnInit {
             return;
         }
 
-        this.messages.push(this.newMessage);
+        this.messages = this.messages.filter(message => message.type !== MessageType.INDICATOR);
+        this.messages.push(new ChatMessage(this.newMessage, MessageType.USER));
         this.newMessage = null;
-        this.messageStream.next('...');
+        this.messageStream.next(this._indicatorMessage);
     }
 }

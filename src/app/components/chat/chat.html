@@ -1,9 +1,9 @@
 <div class="flex flex-column message-wrapper">
     <div class="messagebox">
         <ng-container *ngFor="let message of messages">
-            <div class="mb-2">
-                <span class="message">
-                        {{message}}
+            <div class="mb-2" [class.usermessagebox]="message.type === 2">
+                <span class="message" [class.usermessage]="message.type === 2">
+                    {{message.message}}
                 </span>
             </div>
         </ng-container>

@@ -9,6 +9,15 @@
     height: calc(100vh - 150px);
 }
 
+.usermessage {
+    background: #E3E5E6;
+    color: black;
+}
+
+.usermessagebox {
+    text-align: right;
+}
+
 .messagebox {
     flex-grow: 1;
 }

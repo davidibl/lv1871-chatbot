@@ -55,3 +55,20 @@ Unsere drei Indikatorpunkte bleiben leider immer stehen.
 Das sollten wir verbessern indem die drei Punkte wenn sie denn erschienen sind immer die unterste Nachricht darstellen.
 
 Zudem ist es Anforderung dass Nachrichten des Nutzers in schwarz auf hellgrau dargestellt werden.
+
+
+# Schritt 6 - Der Chatservice
+
+In diesem Schritt binden wir nun den Chatservice an.
+Um diesen zunächst zu simulieren implementieren wir in dem Service ChatService eine Methode
+answer(kundennummer: number, message: string): Observable<ChatMessage>
+
+Diese Methode nimmt die Kundennummer und die Nachricht des Benutzers entgegen.
+Der Service soll ein Array mit 3 beliebigen Antworten enthalten von denen immer eine als Antwort zurückgegeben wird.
+Die Antwort soll hierbei zufällig ausgewählt werden.
+
+Jede Antwort soll in der UI leicht eitverzögert erscheinen. Analog der initialen Nachricht.
+Indem unsere Methode ein Observable zurück liefert, sind alle Vorbereitungen getroffen um einen Remoteservice
+zum Antworten anzubinden.
+
+Idealerweise ist es nach diesem Schritt zudem Nachrichten durch drücken der Enter-Taste zu senden.
