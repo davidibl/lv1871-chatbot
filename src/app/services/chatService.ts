@@ -35,7 +35,7 @@ export class ChatService {
     private getRandomMessage(kundennummer: number) {
         return Observable
             .from(this._answers)
-            .elementAt(Math.floor((Math.random() * 3)))
+            .elementAt(Math.floor((Math.random() * 5)))
             .map(message => `Hallo Kunde ${kundennummer} ` + message);
     }
 }
