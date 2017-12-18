@@ -2,7 +2,7 @@ import { ALL_SERVICES } from './services/services';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, APP_INITIALIZER } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
@@ -21,7 +21,7 @@ export function startupServiceFactory(startupService: InitService): Function {
     ...ALL_COMPONENTS,
   ],
   imports: [
-    BrowserModule, HttpModule, FormsModule, RouterModule, routing,
+    BrowserModule, HttpClientModule, FormsModule, RouterModule, routing,
   ],
   providers: [
     ALL_SERVICES,

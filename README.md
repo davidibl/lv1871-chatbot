@@ -4,7 +4,11 @@ Eine App mit Frontend für einen Chatbot.
 
 # Schritt 1 - Entwicklungsumgebung
 
+Schritte die mit "lv1871" markiert sind werden normalerweise nicht benötigt!
+
 Sucht euch einen Ordner in dem alles stattfinden soll, öffnet eine Git Bash (rechtsklick -> Git Bash here)
+
+- "lv1871" In Git den Proxy eintragen (proxy02:9090)
 
 Dann folgendes Repository klonen:
 **https://github.com/davidibl/lv1871-chatbot**
@@ -16,8 +20,9 @@ In diesem Repository findet ihr auch dieses Readme.
 # Schritt 2 - CLI installieren und Angular Projekt erzeugen
 
 - CLI installieren: *npm install -g @angular/cli*
-- In der Umgebungsvariablen Path eures Kontos folgenden Eintrag hinzufügen: 'C:\Users\%USERNAME%\AppDate\Roaming\npm'
+- "lv1871" In der Umgebungsvariablen Path eures Kontos folgenden Eintrag hinzufügen: 'C:\Users\{USERNAME}\AppDate\Roaming\npm' ({USERNAME}) hierbei durch den eigenen Benutzernamen ersetzen!
 - In den Ordner des Projektes wechseln (lv1871-chatbot)
+- Abhängigkeiten mit npm install installieren: *npm install*
 - Nun kann die Web App gestartet werden *ng serve --port xxxx* (Port mit Glück einen freien wählen)
 - Und zuletzt könnt ihr die Web App betrachten: *localhost:port*
 
@@ -73,3 +78,20 @@ Indem unsere Methode ein Observable zurück liefert, sind alle Vorbereitungen ge
 zum Antworten anzubinden.
 
 Idealerweise ist es nach diesem Schritt zudem Nachrichten durch drücken der Enter-Taste zu senden.
+
+
+# Schritt 7 - Der QnA Remote Service
+
+Unter http://localhost:9001/api finden wir nun den Remote Service der schließlich antworten zu Fragen liefern soll.
+In einem ersten Schritt gilt es diesen anzubinden und dafür zu sorgen dass auf eine Frage im er mit einer Antwort 
+geantwortet wird.
+
+Der richtige Ort für die Service Anbindung ist natürlich der ChatService. Mit Hilfe der Angular DI wird der
+HttpClient im Kostruktor injeziert.
+
+Wenn wir uns das API des HttpClient ansehen finden wir direkt Methoden die im REST Umfeld vertraut klingen...
+
+In Zeile 34 wird mit Hilfe von *.switchMap(knr => this.getRandomMessage(knr))* eine zufällge Antwort erzeugt.
+Genau hier muss statt der zufälligen Antwort eine Antwort aus dem Service abgerufen werden. Nachdem *getRandomMessage*
+bereits asynchron implementiert ist müssen wir eigentlich nur die Frage durchschleifen und statt randomMessage den
+HttpClient verwenden.

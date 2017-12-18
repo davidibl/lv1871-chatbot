@@ -8,6 +8,9 @@ import 'rxjs/add/operator/elementAt';
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/observable/from';
+import 'rxjs/add/operator/mergeMap';
+import 'rxjs/add/operator/take';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable()
 export class ChatService {
