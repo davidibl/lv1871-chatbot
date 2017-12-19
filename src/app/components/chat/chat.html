@@ -6,7 +6,9 @@
                       [class.usermessage]="message.type === 2"
                       [innerHTML]="message.message">
                 </span>
-                <span *ngIf="message.score"><i class="fa fa-heart" aria-hidden="true"></i></span>
+                <span *ngIf="message.score">
+                    <i (click)="train(message)" class="fa fa-heart pointer" aria-hidden="true"></i>
+                </span>
                 <span class="block" *ngIf="message.score">
                     {{message.score}}
                 </span>

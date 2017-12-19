@@ -53,6 +53,11 @@ export class ChatComponent implements OnInit {
             });
     }
 
+    public train(message: ChatMessage) {
+        this._chatService
+            .trainService(this.messages.filter(msg => msg.type === MessageType.USER).reverse()[0].message, message);
+    }
+
     public sendMessage() {
         if (!this.newMessage) {
             return;
