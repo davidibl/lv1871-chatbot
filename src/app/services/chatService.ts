@@ -18,6 +18,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class ChatService {
 
     private url = 'http://localhost:9001/api/answer';
+    private urlTrain = 'http://localhost:9001/api/train';
 
     private _answers = [
         'Uiuiuiuiui',
@@ -39,6 +40,27 @@ export class ChatService {
             .switchMap(knr => this.getAnswer(knr, newMessage))
             .flatMap(message => message)
             .map(message => new ChatMessage(message.answer, MessageType.REMOTE, message.score));
+    }
+
+    public trainService(userMessage: string, messageChosen: ChatMessage) {
+        this._kundennummerservice
+            .getKundennummer()
+            .switchMap(kundennummer => this.postTrainingData(kundennummer, userMessage, messageChosen))
+            .subscribe();
+    }
+
+    private postTrainingData(kundennummer: number, userMessage: string, messageChosen: ChatMessage): Observable<Object> {
+        return this._webClient
+            .put(this.urlTrain, {
+                feedbackRecords: [
+                    {
+                        kbAnswer: messageChosen.message,
+                        kbQuestion: messageChosen.kbAnswer,
+                        userId: kundennummer.toString(),
+                        userQuestion: userMessage,
+                    },
+                ],
+            });
     }
 
     private getAnswer(kundennummer: number, question: string) {
