@@ -38,7 +38,7 @@ export class ChatService {
             .getKundennummer()
             .switchMap(knr => this.getAnswer(knr, newMessage))
             .flatMap(message => message)
-            .take(1)
+            // .take(1)
             .map(message => new ChatMessage(message.answer, MessageType.REMOTE));
     }
 
@@ -49,7 +49,7 @@ export class ChatService {
     private doRequest(question: string): Observable<IRemoteAnswer[]> {
 
         return this._webClient
-            .post<IRemoteAnswerResult>(this.url, { question: question })
+            .post<IRemoteAnswerResult>(this.url, { top: 3, question: question })
             .map(result => result.answers);
     }
 }
