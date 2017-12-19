@@ -100,6 +100,7 @@ HttpClient verwenden.
 # Schritt 8 - Darstellung aller Antworten sortiert nach Score
 
 Der Antwortservice liefert uns ein Modell zurück das n-Antworten enthalten kann.
+Mit der Frage "Wer bist du?" können wir dieses Verhalten provozieren...
 In diesem Schritt sollen dem Benutzer alle Antworten des Service angezeigt werden. Sortiert nach ihrem Score.
 
 * Der Score repräsentiert die Confidence mit der die Deep Learning Engine die Antwort ausgewählt hat
