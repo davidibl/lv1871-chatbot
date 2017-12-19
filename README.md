@@ -95,3 +95,19 @@ In Zeile 34 wird mit Hilfe von *.switchMap(knr => this.getRandomMessage(knr))* e
 Genau hier muss statt der zufälligen Antwort eine Antwort aus dem Service abgerufen werden. Nachdem *getRandomMessage*
 bereits asynchron implementiert ist müssen wir eigentlich nur die Frage durchschleifen und statt randomMessage den
 HttpClient verwenden.
+
+
+# Schritt 8 - Darstellung aller Antworten sortiert nach Score
+
+Der Antwortservice liefert uns ein Modell zurück das n-Antworten enthalten kann.
+In diesem Schritt sollen dem Benutzer alle Antworten des Service angezeigt werden. Sortiert nach ihrem Score.
+
+* Der Score repräsentiert die Confidence mit der die Deep Learning Engine die Antwort ausgewählt hat
+
+Man muss das Modell des Interface anpassen, das beim Abrufen der Nachrichte verwendet wird. Zudem muss das
+Modell *ChatMessage* angepasst werden. Dieses kann nun mehrere Antworten enthalten und zudem zu jeder Antwort einen
+Score.
+
+Hält man das Modell abwärtskompatibel funktioniert die Nutzereingabe weiterhin. Dann müssen im Template mit Hilfe
+der Angular Funktionen *ngIf und *ngFor etc. die Logik zur Darstellung abgebildet werden.
+
