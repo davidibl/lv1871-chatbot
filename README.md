@@ -104,8 +104,8 @@ In diesem Schritt sollen dem Benutzer alle Antworten des Service angezeigt werde
 
 * Der Score repräsentiert die Confidence mit der die Deep Learning Engine die Antwort ausgewählt hat
 
-Man muss das Modell des Interface anpassen, das beim Abrufen der Nachrichte verwendet wird. Zudem muss das
-Modell *ChatMessage* angepasst werden. Dieses kann nun mehrere Antworten enthalten und zudem zu jeder Antwort einen
+Man könnte das Modell des Interface anpassen, das beim Abrufen der Nachrichte verwendet wird. Zudem muss man dann das
+Modell *ChatMessage* anpassen. Dieses kann nun mehrere Antworten enthalten und zudem zu jeder Antwort einen
 Score.
 
 Hält man das Modell abwärtskompatibel funktioniert die Nutzereingabe weiterhin. Dann müssen im Template mit Hilfe
@@ -114,5 +114,8 @@ der Angular Funktionen *ngIf und *ngFor etc. die Logik zur Darstellung abgebilde
 Eine andere Variante wäre es den Chatservice genauer zu betrachten. 
 Im besonderen die Stream Verarbeitung der Methode *answer* hat erheblichen Einfluss darauf wie mit Multiplen
 Nachrichten umgegangen wird.
-Die Nachrichten sollten schließlich übrigend unterhalb der Nachricht selbst Ihren Score rechtsbündig darstellen. 
-
+Die Nachrichten sollten schließlich übrigens unterhalb der Nachricht selbst Ihren Score linksbündig darstellen. 
+Zudem sollte jede Nachricht ein kleines Herz darstellen.
+Verwendet hierfür das Font-awsome Herz Icon. Der Fontawsome Schrifttyp nebst zugehörigem Stylesheet steht uns
+zur Verfügung.
+Google hilft hier sicher weiter. 
