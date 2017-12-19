@@ -1,3 +1,5 @@
+import { IRemoteAnswerResult } from './../model/remoteAnswerResult';
+import { IRemoteAnswer } from './../model/remoteAnswer';
 import { MessageType } from './../model/chatMessageType';
 import { ChatMessage } from './../model/chatMessage';
 import { KundennummerService } from './kundennummerService';
@@ -15,6 +17,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 @Injectable()
 export class ChatService {
 
+    private url = 'http://localhost:9001/api/answer';
+
     private _answers = [
         'Uiuiuiuiui',
         'Sowas aber auch :-O',
@@ -26,19 +30,26 @@ export class ChatService {
 
     public answerStream = new ReplaySubject<ChatMessage>();
 
-    public constructor(private _kundennummerservice: KundennummerService) {}
+    public constructor(private _kundennummerservice: KundennummerService,
+                       private _webClient: HttpClient) {}
 
     public answer(newMessage: string) {
         return this._kundennummerservice
             .getKundennummer()
-            .switchMap(knr => this.getRandomMessage(knr))
-            .map(message => new ChatMessage(message, MessageType.REMOTE));
+            .switchMap(knr => this.getAnswer(knr, newMessage))
+            .flatMap(message => message)
+            .take(1)
+            .map(message => new ChatMessage(message.answer, MessageType.REMOTE));
     }
 
-    private getRandomMessage(kundennummer: number) {
-        return Observable
-            .from(this._answers)
-            .elementAt(Math.floor((Math.random() * 3)))
-            .map(message => `Hallo Kunde ${kundennummer} ` + message);
+    private getAnswer(kundennummer: number, question: string) {
+        return this.doRequest(question);
+    }
+
+    private doRequest(question: string): Observable<IRemoteAnswer[]> {
+
+        return this._webClient
+            .post<IRemoteAnswerResult>(this.url, { question: question })
+            .map(result => result.answers);
     }
 }

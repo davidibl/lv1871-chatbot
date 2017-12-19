@@ -2,7 +2,9 @@
     <div class="messagebox">
         <ng-container *ngFor="let message of messages">
             <div class="mb-2" [class.usermessagebox]="message.type === 2">
-                <span [innerHTML]="message.message" class="message" [class.usermessage]="message.type === 2">
+                <span class="message"
+                      [class.usermessage]="message.type === 2"
+                      [innerHTML]="message.message">
                 </span>
             </div>
         </ng-container>
