@@ -133,3 +133,23 @@ Implementiert in der *chatService* Klasse eine Funktion, die den trainieren-Endp
 Verwendet hierfür wieder den HttpClient.
 
 Das Ziel ist erreicht wenn im Chatservice eine entsprechende Methode zur Verfügung steht.
+
+
+# Schritt 10 - Anbindung der Trainingsmethode
+
+Einige haben es bestimmt geahnt und schon begonnen. Nun gilt es die Traningsfunktion dem Nutzer anzubieten.
+
+Wenn der Nutzer eine Nachricht als besonders gut erachtet soll er dies durch klicken des Herz-Symbols
+unserem Service signalisieren.
+Dies verbessert daraufhin nach und nach die Antwortqualität.
+
+Fügt ein *click* event ein und assoziiert dieses mit einer Funktion in der Chat Klasse.
+Beim Aufruf einer Methode kann direkt das *ChatMessage* Objekt mitgegeben werden.
+
+Das API erwartet die ursprüngliche Usermessage. Die muss mitgegeben werden. Als temporärer Workaround 
+ist es zulässig im Rahmen dieser Lösung hier stehts die letzte Nachricht des Nutzers mitzugeben.
+
+In einer Produktionslösung wäre es essentiell sicherzustellen dass die korrekte auslösende Nutzernachricht
+zum trainieren des Service mitgegeben wird.
+Sollte ausreichend Zet sein wäre es die letzte Aufgabe eben dies sicherzustellen.
+ 

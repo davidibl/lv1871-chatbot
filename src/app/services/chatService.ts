@@ -39,7 +39,7 @@ export class ChatService {
             .getKundennummer()
             .switchMap(knr => this.getAnswer(knr, newMessage))
             .flatMap(message => message)
-            .map(message => new ChatMessage(message.answer, MessageType.REMOTE, message.score));
+            .map(message => new ChatMessage(message.answer, MessageType.REMOTE, message.score, message.question));
     }
 
     public trainService(userMessage: string, messageChosen: ChatMessage) {
@@ -55,7 +55,7 @@ export class ChatService {
                 feedbackRecords: [
                     {
                         kbAnswer: messageChosen.message,
-                        kbQuestion: messageChosen.kbAnswer,
+                        kbQuestion: messageChosen.kbQuestion,
                         userId: kundennummer.toString(),
                         userQuestion: userMessage,
                     },
