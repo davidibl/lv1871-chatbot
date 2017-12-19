@@ -6,6 +6,9 @@
                       [class.usermessage]="message.type === 2"
                       [innerHTML]="message.message">
                 </span>
+                <span class="block" *ngIf="message.score">
+                    {{message.score}}
+                </span>
             </div>
         </ng-container>
     </div>

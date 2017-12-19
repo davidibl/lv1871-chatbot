@@ -38,8 +38,7 @@ export class ChatService {
             .getKundennummer()
             .switchMap(knr => this.getAnswer(knr, newMessage))
             .flatMap(message => message)
-            // .take(1)
-            .map(message => new ChatMessage(message.answer, MessageType.REMOTE));
+            .map(message => new ChatMessage(message.answer, MessageType.REMOTE, message.score));
     }
 
     private getAnswer(kundennummer: number, question: string) {

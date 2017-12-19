@@ -64,10 +64,10 @@ export class ChatComponent implements OnInit {
             .do(message => this.messages.push(new ChatMessage(message, MessageType.USER)))
             .do(message => this.newMessage = null)
             .do(message => this.messageStream.next(this._indicatorMessage))
-            .delay(3000)
+            .delay(500)
             .switchMap(message => this._chatService.answer(message))
             .do(newRemoteMessage => this.messageStream.next(newRemoteMessage))
-            .delay(1500)
+            .delay(1000)
             .subscribe(newRemoteMessage => this.messages = this.messages.filter(msg => msg.type !== MessageType.INDICATOR));
     }
 }
