@@ -111,3 +111,8 @@ Score.
 Hält man das Modell abwärtskompatibel funktioniert die Nutzereingabe weiterhin. Dann müssen im Template mit Hilfe
 der Angular Funktionen *ngIf und *ngFor etc. die Logik zur Darstellung abgebildet werden.
 
+Eine andere Variante wäre es den Chatservice genauer zu betrachten. 
+Im besonderen die Stream Verarbeitung der Methode *answer* hat erheblichen Einfluss darauf wie mit Multiplen
+Nachrichten umgegangen wird.
+Die Nachrichten sollten schließlich übrigend unterhalb der Nachricht selbst Ihren Score rechtsbündig darstellen. 
+
