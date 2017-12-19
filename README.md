@@ -119,3 +119,17 @@ Zudem sollte jede Nachricht ein kleines Herz darstellen.
 Verwendet hierfür das Font-awsome Herz Icon. Der Fontawsome Schrifttyp nebst zugehörigem Stylesheet steht uns
 zur Verfügung.
 Google hilft hier sicher weiter. 
+
+# Schritt 9 - Methode um den Service zu trainieren
+
+Widmen wir uns nochmal dem API. Im oberen Dropdown können hier zwei verschiedene Endpunkte gewählt werden.
+In diesem Schritt wollen wir uns mit dem zweiten (train) befassen.
+
+Dieser Endpunkt stellt eine REST Resource bereit die es ermöglicht den Antwort Service zu trainieren.
+Als PUT Body erwartet der Service ein Modell das diverse Parameter entgegen nimmt. Nur wenn man alle
+Parameter übrgibt wird der Service auch trainiert.
+
+Implementiert in der *chatService* Klasse eine Funktion, die den trainieren-Endpoint korrekt aufruft.
+Verwendet hierfür wieder den HttpClient.
+
+Das Ziel ist erreicht wenn im Chatservice eine entsprechende Methode zur Verfügung steht.
