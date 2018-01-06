@@ -17,7 +17,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 @Injectable()
 export class ChatService {
 
-    private _url = 'https://westus.api.cognitive.microsoft.com/qnamaker/v2.0/knowledgebases/{knowledgebase-id}';
+    private _url = 'https://westus.api.cognitive.microsoft.com/qnamaker/v2.0/knowledgebases/{knowledgebase-id}/generateAnswer';
     private _urlTrain = 'https://westus.api.cognitive.microsoft.com/qnamaker/v2.0/knowledgebases/{knowledgebase-id}/train';
     private _apikey = '{your-apikey}';
 
