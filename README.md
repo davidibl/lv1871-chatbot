@@ -82,9 +82,12 @@ Idealerweise ist es nach diesem Schritt zudem Nachrichten durch drücken der Ent
 
 # Schritt 7 - Der QnA Remote Service
 
-Unter http://localhost:9001/api finden wir nun den Remote Service der schließlich antworten zu Fragen liefern soll.
-In einem ersten Schritt gilt es diesen anzubinden und dafür zu sorgen dass auf eine Frage im er mit einer Antwort 
-geantwortet wird.
+Nun soll der Microsoft QNA Maker Service als Chatbot angebunden werden.
+Die Dokumentation des APi findet sich hier:
+*https://westus.dev.cognitive.microsoft.com/docs/services/58994a073d9e04097c7ba6fe/operations/58994a073d9e041ad42d9baa*
+Um den Service zu verwenden ist es notwendig einen Azure Account zu haben und ein paar Fragen und Antworten zu trainieren.
+Dazu einfach unter *https://qnamaker.ai/* anmelden und einen API Key beorgen.
+Der Key muss bei jedem Http Request gegen den Service im Header mitgegeben werden.
 
 Der richtige Ort für die Service Anbindung ist natürlich der ChatService. Mit Hilfe der Angular DI wird der
 HttpClient im Kostruktor injeziert.
