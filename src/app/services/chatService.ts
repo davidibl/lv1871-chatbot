@@ -17,7 +17,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 @Injectable()
 export class ChatService {
 
-    private url = 'http://localhost:9001/api/answer';
+    private _url = 'https://westus.api.cognitive.microsoft.com/qnamaker/v2.0/knowledgebases/{knowledgebase-id}';
+    private _apikey = '{your-apikey}';
 
     private _answers = [
         'Uiuiuiuiui',
@@ -46,9 +47,10 @@ export class ChatService {
     }
 
     private doRequest(question: string): Observable<IRemoteAnswer[]> {
+        const headers = new HttpHeaders({'Ocp-Apim-Subscription-Key': this._apikey });
 
         return this._webClient
-            .post<IRemoteAnswerResult>(this.url, { top: 3, question: question })
+            .patch<IRemoteAnswerResult>(this._url, { top: 3, question: question })
             .map(result => result.answers);
     }
 }
